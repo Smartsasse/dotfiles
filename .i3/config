@@ -40,9 +40,9 @@ set $alt Mod1
 ###########################  GLOBAL HOTKEYS  ###########################
 
 # MPD (mpc)
-bindsym Control+$alt+Insert       exec ~/mpc_toggle.sh
-bindsym Control+$alt+Page_Up      exec mpc -h "someone@localhost" prev
-bindsym Control+$alt+Page_Down    exec mpc -h "someone@localhost" next
+bindsym Control+$alt+Insert       exec ~/.i3/mpc_toggle.sh
+bindsym Control+$alt+Page_Up      exec ~/.i3/mpc_prev.sh
+bindsym Control+$alt+Page_Down    exec ~/.i3/mpc_next.sh
 bindsym Control+$alt+Up           exec amixer -q sset PCM 2%+
 bindsym Control+$alt+Down         exec amixer -q sset PCM 2%-
 

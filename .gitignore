@@ -1,2 +1,4 @@
 .i3/mpd_host
 .i3/mpc_toggle.sh
+.i3/mpc_next.sh
+.i3/mpc_prev.sh
