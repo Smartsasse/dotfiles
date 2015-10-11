@@ -2,7 +2,7 @@
 
 dir=~/dotfiles                                 # dotfiles directory
 olddir=~/dotfiles_old                          # old dotfiles backup directory
-files=".bashrc .bash_profile .i3 .vim .Xresources "        # list of files/folders to symlink in homedir
+files=".bashrc .bash_profile .i3 .vim .Xresources"        # list of files/folders to symlink in homedir
 
 ##########
 
@@ -18,10 +18,17 @@ echo "...done"
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
 for file in $files; do
-	echo "Moving any existing dotfiles from ~ to $olddir"
-	mv ~/$file ~/dotfiles_old/
-	echo "Creating symlink to $file in home directory."
-	ln -s $dir/$file ~/$file
+
+#	if [[ -L "$file" && -d "$file" ]]	
+#	if [ -e ~/$file ]; then
+#	if [[ -L "$file" ]]; then
+	if [[ -e ~/$file && ! -L ~/$file ]]; then
+		echo "Moving any existing dotfiles from ~ to $olddir and creating symlink to $file"
+		mv ~/$file ~/dotfiles_old/
+		ln -s $dir/$file ~/$file
+	else
+		echo "Skipping $file since doesn't exist or is already symlink"
+	fi
 done
 
 #source ~/.bashrc
